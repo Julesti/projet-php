@@ -1,0 +1,101 @@
+body{
+	font-family: 'Roboto';
+	margin:0px;
+	padding:0px;
+}
+
+header{
+	padding: 12vw 0px;
+	background-image: url("photo.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin:0;
+	
+}
+
+.centered{
+	text-align: center;
+	font-size: xx-large;
+}
+
+.head{
+	margin : 0 px;
+	margin-top: 0px;
+	padding: 0 px;
+	overflow: hidden;
+	background-color: #A9AFAF;
+	clear: both;
+	height: 35px;
+}
+
+.title {
+	margin-top: 2px;
+	float: left;
+	color:black; 
+	font-size:x-large;
+	margin-left:30px;
+}
+.back {
+	margin-top: 2px;
+	float: right;
+	color:black; 
+	font-size:x-large;
+	margin-right : 30px;
+}
+
+ul {
+	list-style-type: none;
+	margin : 0 px;
+	margin-top: 0px;
+	padding: 0 px;
+	overflow: hidden;
+	background-color: #A9AFAF;
+}
+
+li {
+	float: left;
+	margin-right : 30px;
+}
+
+li a{
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding : 14px 16px;
+	text-decoration: none;
+}
+
+ul :: after{
+	content:"";
+	display: block;
+	clear: both;
+}
+
+li:hover .submenu {
+    display: inline-block;
+}
+
+li .submenu a:hover{
+	background-color: #ffff4d;
+}
+
+.submenu {
+	display: none;
+	position: absolute;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.submenu a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+
+
+
