@@ -11,7 +11,11 @@ require('form.php');
 
 	<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
 	<script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
-	<h1>Gestion des match de volley du club de Toulouse</h1>
+	<div class="head"> 
+		<p class="title">Préparer un match</p>
+		<p class="back" ><a href="acceuil.php" style="color:black; ">Retour à l'acceuil</a></p>
+	</div>
+	
 	
 	
 	<?php
@@ -26,11 +30,11 @@ require('form.php');
 		
 		
 			<form name="form_match" action="feuille_match.php" method="post">
-				<p> Liste match à préparer : </p>
+				<p style='font-size: x-large; margin-left : 30px; float:left;'> Liste match à préparer : </p>
 		
 				<!-- Liste des match à préparer!-->
-				<select id="match" name="id_match" onchange='document.forms.form_match.submit();'>
-					<option value="">--- Choissiser un match ---</option>
+				<p style='float:left; margin-top:27px;'><select  style='font-size: large; width:500px; margin-left : 50px;' id="match" name="id_match" onchange='document.forms.form_match.submit();'>
+					<option value="">Choissiser un match</option>
 					<?php 			
 					$req_match = $link->prepare("Select * 
 					from matchbis 
@@ -43,7 +47,7 @@ require('form.php');
 					<?php
 					}
 					?>
-				</select>
+				</select></p></br>
 			</form>
 			<br />
 			<br />
@@ -51,17 +55,16 @@ require('form.php');
 			
 			<form name="form_joueur" action="feuille_match.php" method="post">
 			<!--Liste des joueurs actifs !-->
-			<p> Veuillez choisir la position du joueur à ajouter dans la liste : </p>
-		
-			
+			<p style='font-size: x-large; margin-left : 30px; '> Veuillez choisir la position du joueur à ajouter dans la liste : </p>
+					<p style='font-size: x-large; margin-left : 60px; '>
 					<input type="radio" name="position" value="titulaire" id="titu" checked>Titulaire</input>
 					<input type="radio" name="position" value="remplacant" id="rem">Remplaçant</input>
-					
+					</p>
 					<br />
 					<br />
 					
 					
-					<select id="joueur"  name="num_licence">
+					<select style='font-size: large; margin-left : 30px; ' id="joueur"  name="num_licence">
 						<?php
 					
 						$req_joueur = $link->prepare('Select num_licence, nom, prenom, poste from joueur 
@@ -86,13 +89,13 @@ require('form.php');
 						<?php
 					} 
 					?>
-					<input type="submit" value="Ajouter le joueur"/>	
+					<input style='font-size: large; background-color: #A9AFAF; color:black; height: 27px; width:200px; margin-left:15px;' type="submit" value="Ajouter le joueur"/>	
 			</form>
 			<br />
 		
 			
-			<p>Liste joueur Titulaire :</p>
-			<select id="liste_joueur_titulaire" name="joueur_tit" size="6">
+			<p style='font-size: x-large; margin-left : 30px; '>Liste joueur Titulaire :</p>
+			<select style='font-size: large; margin-left : 30px; ' id="liste_joueur_titulaire" name="joueur_tit" size="6">
 			<?php 
 			
 			
@@ -118,8 +121,8 @@ require('form.php');
 			<br />
 			<br />
 		
-			<p>Liste joueurs remplaçant : </p>
-			<select id="liste_joueur_remplacant" name="joueur_rem"size="3">
+			<p style='font-size: x-large; margin-left : 30px; '>Liste joueurs remplaçant : </p>
+			<select  style='font-size: large; margin-left : 30px;'id="liste_joueur_remplacant" name="joueur_rem"size="3">
 		
 				<?php 
 				if(isset($_POST['id_match'])){
@@ -143,7 +146,7 @@ require('form.php');
 		
 			<br />
 			<br />
-			<input type="submit" value="Créer fiche de match" />
+			<input style='font-size: x-large; background-color: #A9AFAF; color:black; margin-bottom:50px; margin-left:50; margin-top:40px; height: 40px; float:left; width:300px;' type="submit" value="Créer fiche de match" />
 	
 	
 		<?php

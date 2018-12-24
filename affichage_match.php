@@ -8,19 +8,22 @@ require('config.php');
 
 <body>
 
-	<h1>Gestion des match de volley du club de Toulouse</h1>
+	<div class="head"> 
+		<p class="title">Afficher les matchs</p>
+		<p class="back" ><a href="acceuil.php" style="color:black; ">Retour à l'acceuil</a></p>
+	</div>
 	
-	<h2>Liste des match : </h2>
 	
 	
-	<table border-collapse=collapse border=1px solid black>
+	
+	<table  border=1px style='margin-top:30px; margin-bottom:30px; margin-left:18px; width:97%'>
 		<tr>
-			<th>N° Match</th>
-			<th>Date match</th>
-			<th>Heure du match</th>
-			<th>Nom des adversaires </th>
-			<th>Lieu de la rencontre </th>
-			<th> Résultat </th>
+			<th style='color:#565d5d; font-size:x-large;'>N° Match</th>
+			<th style='color:#565d5d; font-size:x-large;'>Date match</th>
+			<th style='color:#565d5d; font-size:x-large;'>Heure du match</th>
+			<th style='color:#565d5d; font-size:x-large;'>Nom des adversaires </th>
+			<th style='color:#565d5d; font-size:x-large;'>Lieu de la rencontre </th>
+			<th style='color:#565d5d; font-size:x-large;'> Résultat </th>
 		</tr>
 	<?php
 	
@@ -39,7 +42,7 @@ require('config.php');
 		<th>
 		<form method="GET" action="suppression_match.php">
 			<input type="hidden" name="id_match" value="<?php echo $data['id_match']?>" />
-			<input type="submit" value="Supprimer" />
+			<input type="submit" value="Supprimer" style='font-size: large; height: 40px; float:center; color:#565d5d;  border:none; background-color: white;'/>
 		</form>
 		</th>
 	</tr>
@@ -51,7 +54,6 @@ require('config.php');
 	?> 
 	</table>
 	
-	<a href="acceuil.php">Retour à l'acceuil</a>
 	
 </body>
 

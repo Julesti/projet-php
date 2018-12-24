@@ -12,7 +12,7 @@ require('form.php');
 	
 	<div class="head"> 
 		<p class="title">Ajouter joueur</p>
-		<p class="back" ><a href="acceuil.php" style="color:black; ">Retour</a></p>
+		<p class="back" ><a href="acceuil.php" style="color:black; ">Retour à l'acceuil</a></p>
 	</div>
 	
 	<?php

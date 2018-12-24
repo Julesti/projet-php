@@ -9,7 +9,11 @@ require('form.php');
 
 <body>
 
-	<h1>Gestion des match de volley du club de Toulouse</h1>
+	<div class="head"> 
+		<p class="title">Programmer un match</p>
+		<p class="back" ><a href="acceuil.php" style="color:black; ">Retour à l'acceuil</a></p>
+	</div>
+	
 	<?php
 	if(empty($_POST)){
 		$form = new form("ajout_match.php","post");
@@ -17,6 +21,7 @@ require('form.php');
 		$form->setText("Date du match","date","");
 		$form->setInput("Heure du match","heure","","time");
 		$form->setText("Nom des adversaires","nom_adversaire","");
+		$form->addText("Lieu : ");
 		$form->setRadio("lieu","Domicile",True);
 		$form->setRadio("lieu","Extérieur",False);
 		$form->getform();
