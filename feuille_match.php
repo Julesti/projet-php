@@ -9,22 +9,26 @@ require('form.php');
 
 <body>
 
-	<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
-	<script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
+
 	<h1>Gestion des match de volley du club de Toulouse</h1>
 	
 	
 	<?php
+	
+		include('menu.html');
 		$var = 0;
 		if(isset($_POST['id_match'])){
 			$var = $_POST['id_match'];
 		}
 		
-		if(!(isset($_POST['num_licence']))){
+		if(isset($_POST['num_licence'])){
+			$req_insert = $link->prepare('insert into jouer_match(id_match,num_licence,position,note) values (:id_match, :num_licence, :position,0)');
+			$req_insert->execute(array('id_match' => $_POST['id_match'],
+									'num_licence' => $_POST['num_licence'],
+									'position' => $_POST['position']));	
+			
+		}
 	?>
-	
-		
-		
 			<form name="form_match" action="feuille_match.php" method="post">
 				<p> Liste match à préparer : </p>
 		
@@ -86,7 +90,7 @@ require('form.php');
 						<?php
 					} 
 					?>
-					<input type="submit" value="Ajouter le joueur"/>	
+					<input type="submit" value="Ajouter le joueur" onclick="joueur_exist()" />	
 			</form>
 			<br />
 		
@@ -146,20 +150,17 @@ require('form.php');
 			<input type="submit" value="Créer fiche de match" />
 	
 	
+	
 		<?php
+		
+		
+		
 		$req_joueur->closeCursor();
 		$req_match->closeCursor(); 
 		
 		
 	// Insertion dans la base de données	
-	}else{
-		$req_insert = $link->prepare('insert into jouer_match(id_match,num_licence,position,note) values (:id_match, :num_licence, :position,0)');
-		$req_insert->execute(array('id_match' => $_POST['id_match'],
-									'num_licence' => $_POST['num_licence'],
-									'position' => $_POST['position']));	
-		
-	  	header('Location:feuille_match.php');
-		}
+	
 	?>
 	
 	
@@ -175,7 +176,19 @@ require('form.php');
 			document.getElementById('match').getElementsByTagName('option')[value].selected = 'selected';
 		}
 		*/
-	
+		function joueur_exist(){
+			
+			var select = document.getElementById('joueur');
+			if(document.getElementById('titu').checked = true){
+				var liste_titulaire = document.getElementById('liste_joueur_titulaire')
+				if(liste_titulaire.options.includes(select.options[select.selectedIndex].text)){
+					alert("Joueur dèjâ dans la liste!");
+				}
+			}
+				
+		}
+			
+		
 	</script>
 	
 </body>

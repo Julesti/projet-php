@@ -6,15 +6,15 @@ class form{
 	private $fields;
 	
 
-	public function __construct($form,$method){
+	public function __construct($action,$method){
 	
-		$this->_form = "<form method='$method' action='$form' /> <br />";
+		$this->_form = "<form method='$action' action='$action' /> <br />";
 		$this->_fields = array();
-	
+
 	}
 	
-	public function setText($affiche,$name,$value){
-		$this->_fields[] = "<p>$affiche : </p> 
+	public function setText($text,$name,$value){
+		$this->_fields[] = "<p>$text : </p> 
 							<br />
 							<input name='$name' value='$value' type='text'/>
 							<br />
