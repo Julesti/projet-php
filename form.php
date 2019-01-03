@@ -6,41 +6,34 @@ class form{
 	private $fields;
 	
 
-	public function __construct($action,$method){
+	public function __construct($form,$method){
 	
-		$this->_form = "<form method='$action' action='$action' /> <br />";
+		$this->_form = "<form method='$method' action='$form' /></br> ";
 		$this->_fields = array();
-
+	
 	}
 	
-	public function setText($text,$name,$value){
-		$this->_fields[] = "<p>$text : </p> 
-							<br />
-							<input name='$name' value='$value' type='text'/>
-							<br />
-							<br />";
+	public function setText($affiche,$name,$value){
+		$this->_fields[] ="<div style=' display: inline-block; margin-left : 50px;'><p style='float:left; font-size: x-large;'>$affiche : </p> 
+							<p ><input style='height: 35px; float:right; width:1200px; ' name='$name' value='$value' type='text' /></p></div></br>";
 	}
 	
 
 	
 	public function setRadio($name,$id,$value){
-	$this->_fields[] = "<input type='radio' id='$id' name='$name' value='$value' />
-						<label for='$id'> $id </label>
-						<br />";
+	$this->_fields[] = "<input style='margin-left : 65px; ' type='radio' id='$id' name='$name' value='$value' />
+						<label style='font-size: x-large;' for='$id'> $id </label>";
 	}
 	
 	
 	
 	public function setInput($affiche,$name,$value,$type){
-		$this->_fields[] = "<p>$affiche : </p> 
-							<br />
-							<input name='$name' value='$value' type='$type'/>
-							<br />
-							<br />";
+		$this->_fields[] = "<p style='font-size: x-large; margin-left : 50px;'>$affiche : </p> 
+							<input style='font-size: large; margin-left : 65px;' name='$name' value='$value' type='$type'/>";
 	}
 	
 	public function addText($text){
-		$this->_fields[] = "<p>$text </p>";
+		$this->_fields[] = "<p style='font-size: x-large; margin-left : 50px;'>$text </p>";
 	}	
 	
 	public function getform(){
@@ -51,7 +44,7 @@ class form{
 			echo $field;
 		}
 		
-		echo "<br /> <input type='submit' value='valider' /> <br />";
+		echo "<br /> <input style='font-size: x-large; background-color: #A9AFAF; color:black; margin-bottom:50px; margin-left:50; margin-top:40px; height: 40px; float:left; width:250px;' type='submit' value='valider' /> ";
 		echo "</form>";
 	}
 

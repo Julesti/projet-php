@@ -6,7 +6,11 @@
 
 <body>
 
-	<h1>Gestion des match de volley du club de Toulouse</h1>
+	<div class="head"> 
+		<p class="title">Ajouter joueur</p>
+		<p class="back" ><a href="acceuil.php" style="color:black; ">Retour à l'acceuil</a></p>
+	</div>
+	
 	
 	<?php 
 	
