@@ -96,6 +96,16 @@ li .submenu a:hover{
 	text-align: left;
 }
 
+.button_hidden{
+	visibility:hidden;
+	font-size:large;
+	background-color: #A9AFAF;
+	margin-left: 15px;
+	color:black;
+	height: 27px;
+	width:200px;
+}
+
 
 
 

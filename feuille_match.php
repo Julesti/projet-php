@@ -9,8 +9,6 @@ require('form.php');
 
 <body>
 
-	<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
-	<script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
 	<div class="head"> 
 		<p class="title">Préparer un match</p>
 		<p class="back" ><a href="acceuil.php" style="color:black; ">Retour à l'acceuil</a></p>
@@ -24,11 +22,21 @@ require('form.php');
 			$var = $_POST['id_match'];
 		}
 		
-		if(isset($_POST['num_licence'])){
+		//Requete suppression de match
+		if(isset($_POST['supprimer']) && $_POST['supprimer'] == True){
+			$req_suppr = $link->prepare('DELETE from jouer_match where id_match = :id_match and num_licence = :num_licence');
+			$req_suppr->execute(array( 'id_match' => $_POST['id_match'],
+										'num_licence' => $_POST['num_licence']));
+					
+			
+		}
+		
+		//Requete d'insertion du match
+		if(isset($_POST['num_licence']) && !isset($_POST['supprimer'])){
 			$req_insert = $link->prepare('insert into jouer_match(id_match,num_licence,position,note) values (:id_match, :num_licence, :position,0)');
 			$req_insert->execute(array('id_match' => $_POST['id_match'],
 									'num_licence' => $_POST['num_licence'],
-									'position' => $_POST['position']));	
+									'position' => $_POST['position']));
 			
 		}
 	?>
@@ -88,6 +96,7 @@ require('form.php');
 					</select>
 					
 					<?php
+					
 					if(isset($_POST['id_match'])){
 						?>
 						<input type="hidden" name="id_match" value="<?php echo $_POST['id_match']; ?>" />
@@ -114,7 +123,7 @@ require('form.php');
 
 				while($data = $req_joueur_tit->fetch()){
 					?>
-					<option value="<?php echo $data["num_licence"];?>" onclick="affiche_bouton()"> <?php echo $data['nom'].' '.$data['prenom'];?> </option>			
+					<option value="<?php echo $data["num_licence"];?>" onclick="affiche_bouton(this)"> <?php echo $data['nom'].' '.$data['prenom'];?> </option>			
 					<?php
 				}
 				$req_joueur_tit->closeCursor();
@@ -123,17 +132,7 @@ require('form.php');
 			
 			</select>
 			
-			<?php
-			if(isset($_POST['id_match'])){
-				?>
-			<form action="feuille_match" method="post">
-				<input type="hidden" name="id_match" value="<?php echo $_POST['id_match']; ?>"/>
-				<input type="hidden" id="hidden_joueur" name="num_licence" value=""/>
-				<input type="submit" value="Supprimer" style='font-size: large; background-color: #A9AFAF; color:black; height: 27px; width:200px; margin-left:15px;visibility:hidden;' />
-			</form>
-			<?php
-			}
-			?>
+
 			<br />
 			<br />
 		
@@ -151,7 +150,7 @@ require('form.php');
 			
 				while($data = $req_joueur_rem->fetch()){
 					?>
-					<option value="<?php echo $data["num_licence"];?>"> <?php echo $data['nom'].' '.$data['prenom'];?> </option>			
+					<option value="<?php echo $data["num_licence"];?>" onclick="affiche_bouton(this)"> <?php echo $data['nom'].' '.$data['prenom'];?> </option>			
 					<?php
 				}
 				$req_joueur_rem->closeCursor();
@@ -162,7 +161,19 @@ require('form.php');
 		
 			<br />
 			<br />
-			<input style='font-size: x-large; background-color: #A9AFAF; color:black; margin-bottom:50px; margin-left:50; margin-top:40px; height: 40px; float:left; width:300px;' type="submit" value="Créer fiche de match" />
+			<?php
+			// Suppression d'un joueur
+			if(isset($_POST['id_match'])){
+				?>
+			<form action="feuille_match" method="post">
+				<input type="hidden" name="id_match" value="<?php echo $_POST['id_match']; ?>" />
+				<input type="hidden" name="supprimer" value=True />
+				<input type="hidden" id="hidden_joueur" name="num_licence" value=""/>
+				<input type="submit" id="hidden_but" value="Supprimer" class="button_hidden" />
+			</form>
+			<?php
+			}
+			?>
 	
 	
 		<?php
@@ -176,8 +187,9 @@ require('form.php');
 	
 	<script>
 	
-		function affiche_bouton(){
-			document.getElementById("hidden_joueur").style.visibility = "visible";
+		function affiche_bouton(elm){
+			document.getElementById("hidden_but").style.visibility = "visible";
+			document.getElementById("hidden_joueur").value = elm.value;
 		}
 	
 	</script>
