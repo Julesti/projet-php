@@ -24,10 +24,15 @@ require('form.php');
 			$var = $_POST['id_match'];
 		}
 		
-		if(!(isset($_POST['num_licence']))){
+		if(isset($_POST['num_licence'])){
+			$req_insert = $link->prepare('insert into jouer_match(id_match,num_licence,position,note) values (:id_match, :num_licence, :position,0)');
+			$req_insert->execute(array('id_match' => $_POST['id_match'],
+									'num_licence' => $_POST['num_licence'],
+									'position' => $_POST['position']));	
+			
+		}
 	?>
 	
-		
 		
 			<form name="form_match" action="feuille_match.php" method="post">
 				<p style='font-size: x-large; margin-left : 30px; float:left;'> Liste match à préparer : </p>
@@ -43,7 +48,7 @@ require('form.php');
 			
 					while($data = $req_match->fetch()){	
 					?>
-						 <option value="<?php echo $data['id_match'];?>"> <?php echo $data['date'].' '.$data['nom_adversaire'];?> </option>
+						 <option value="<?php echo $data['id_match'];?>" <?php if($data['id_match'] == $var){echo 'selected';}?>> <?php echo $data['date'].' '.$data['nom_adversaire'];?> </option>
 					<?php
 					}
 					?>
@@ -109,7 +114,7 @@ require('form.php');
 
 				while($data = $req_joueur_tit->fetch()){
 					?>
-					<option value="<?php echo $data["num_licence"];?>"> <?php echo $data['nom'].' '.$data['prenom'];?> </option>			
+					<option value="<?php echo $data["num_licence"];?>" onclick="affiche_bouton()"> <?php echo $data['nom'].' '.$data['prenom'];?> </option>			
 					<?php
 				}
 				$req_joueur_tit->closeCursor();
@@ -117,7 +122,18 @@ require('form.php');
 			?>
 			
 			</select>
-		
+			
+			<?php
+			if(isset($_POST['id_match'])){
+				?>
+			<form action="feuille_match" method="post">
+				<input type="hidden" name="id_match" value="<?php echo $_POST['id_match']; ?>"/>
+				<input type="hidden" id="hidden_joueur" name="num_licence" value=""/>
+				<input type="submit" value="Supprimer" style='font-size: large; background-color: #A9AFAF; color:black; height: 27px; width:200px; margin-left:15px;visibility:hidden;' />
+			</form>
+			<?php
+			}
+			?>
 			<br />
 			<br />
 		
@@ -155,29 +171,14 @@ require('form.php');
 		
 		
 	// Insertion dans la base de données	
-	}else{
-		$req_insert = $link->prepare('insert into jouer_match(id_match,num_licence,position,note) values (:id_match, :num_licence, :position,0)');
-		$req_insert->execute(array('id_match' => $_POST['id_match'],
-									'num_licence' => $_POST['num_licence'],
-									'position' => $_POST['position']));	
-		
-	  	header('Location:feuille_match.php');
-		}
+
 	?>
 	
-	
 	<script>
-		
-		var match = <?php echo json_encode($var);?>;
-		/**
-		$.(document).ready(function(){
-			$('#match option[value="' + match + '"]').prop('selected', true);
-		});
-		
-		function changeSelected(value){
-			document.getElementById('match').getElementsByTagName('option')[value].selected = 'selected';
+	
+		function affiche_bouton(){
+			document.getElementById("hidden_joueur").style.visibility = "visible";
 		}
-		*/
 	
 	</script>
 	
