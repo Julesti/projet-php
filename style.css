@@ -106,6 +106,19 @@ li .submenu a:hover{
 	width:200px;
 }
 
+.note{
+	display: inline;
+}
+
+.button{
+	font-size: large;
+	background-color: #A9AFAF;
+	color: black;
+	height: 27px;
+	width: 200px;
+	margin-left:15px;
+}
+
 
 
 

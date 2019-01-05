@@ -67,7 +67,7 @@ require('form.php');
 			
 			
 			<form name="form_joueur" action="feuille_match.php" method="post">
-			<!--Liste des joueurs actifs !-->
+			<!--Choix de la position des joueurs!-->
 			<p style='font-size: x-large; margin-left : 30px; '> Veuillez choisir la position du joueur à ajouter dans la liste : </p>
 					<p style='font-size: x-large; margin-left : 60px; '>
 					<input type="radio" name="position" value="titulaire" id="titu" checked>Titulaire</input>
@@ -76,7 +76,7 @@ require('form.php');
 					<br />
 					<br />
 					
-					
+					<!-- Listes de joueurs à ajouter -->
 					<select style='font-size: large; margin-left : 30px; ' id="joueur"  name="num_licence">
 						<?php
 					
@@ -107,7 +107,7 @@ require('form.php');
 			</form>
 			<br />
 		
-			
+			<!-- Listes joueurs Titulaires -->
 			<p style='font-size: x-large; margin-left : 30px; '>Liste joueur Titulaire :</p>
 			<select style='font-size: large; margin-left : 30px; ' id="liste_joueur_titulaire" name="joueur_tit" size="6">
 			<?php 
