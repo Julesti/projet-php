@@ -18,14 +18,14 @@ require('config.php');
 	
 	if(empty($_POST)){
 	?>
-		<p>Voulez supprimer le match <?php echo $_GET['id_match'];?> de la liste ?</p>	
+		<p style="font-size: x-large; mrgin-top:20px; margin-left:25px;">Voulez vous supprimer le match <?php echo $_GET['id_match'];?> de la liste ?</p>	
 		<form action="suppression_match.php" method="post">	
 			<input type="hidden" name="id_match" value="<?php echo $_GET['id_match']?>" />
-			<input type="submit" value="oui" />
+			<input style='font-size: x-large; background-color: #A9AFAF; color:black; margin-left:25; margin-top:10px; height: 40px; float:left; width:250px;' type="submit" value="oui" />
 		</form>
 	
 		<form action="affichage_match.php">	
-			<input type="submit" value="non" />
+			<input style='font-size: x-large; background-color: #A9AFAF; color:black; margin-left:25; margin-top:10px; height: 40px; float:left; width:250px;' type="submit" value="non" />
 		</form>
 	<?php
 	
