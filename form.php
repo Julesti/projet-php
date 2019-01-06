@@ -20,15 +20,15 @@ class form{
 	
 
 	
-	public function setRadio($name,$id,$value){
-	$this->_fields[] = "<input style='margin-left : 65px; ' type='radio' id='$id' name='$name' value='$value' />
+	public function setRadio($name,$id,$value,$select = ""){
+	$this->_fields[] = "<input style='margin-left : 65px; ' type='radio' id='$id' name='$name' value='$value' $select/>
 						<label style='font-size: x-large;' for='$id'> $id </label>";
 	}
 	
 	
 	
 	public function setInput($affiche,$name,$value,$type){
-		$this->_fields[] = "<p style='font-size: x-large; margin-left : 50px;'>$affiche : </p> 
+		$this->_fields[] = "<p style='font-size: x-large; margin-left : 50px;'>$affiche </p> 
 							<input style='font-size: large; margin-left : 65px;' name='$name' value='$value' type='$type'/>";
 	}
 	
