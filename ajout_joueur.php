@@ -60,7 +60,7 @@ require('form.php');
 							'note' => $_POST['note'],
 							'statut' => $_POST['statut'])); 
 		if($req){
-			echo "Joueur ajouté";
+			echo "<p style='font-size: xx-large; mrgin-top:20px; margin-left:25px;'>Joueur ajouté</p>";
 		}
 		else
 			echo "Erreur";

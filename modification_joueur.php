@@ -10,7 +10,7 @@ require('form.php');?>
 <body>
 
 	<div class="head"> 
-		<p class="title">Liste de joueur</p>
+		<p class="title">Modifier le joueur</p>
 		<p class="back" ><a href="acceuil.php" style="color:black; ">Retour à l'acceuil</a></p>
 	</div>
 	
@@ -74,10 +74,10 @@ require('form.php');?>
 								'statut' => $_POST['statut'],
 								'photo' => $_POST['photo']));
 		if($update){
-			echo "modication effectué";
+			echo "<p style='font-size: xx-large; mrgin-top:20px; margin-left:25px;'>modifcation effectué</p>";
 			?>
-			<form action="recherche_joueur.php" >	
-				<input type="submit" value="liste des joueurs" />
+			<form action="affichage_joueur.php" >	
+				<input style='font-size: x-large; background-color: #A9AFAF; color:black; margin-left:25; margin-top:10px; height: 40px; float:left; width:250px;' type="submit" value="liste des joueurs" />
 			</form>
 			<?php
 		}

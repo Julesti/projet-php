@@ -35,14 +35,14 @@ require('form.php');
 							'nom_adversaire' => $_POST['nom_adversaire'],
 							'lieu' => $_POST['lieu'])); 
 		if($req){
-			echo "Match ajouté";
+			echo "<p style='font-size: xx-large; mrgin-top:20px; margin-left:25px;'>Match ajouté</p>";
 		}
 		else
 			echo "Erreur lors de l'ajout du match";
 			
 			?>
 			<br />
-			<a href="acceuil.php">Retour à l'acceuil</a>
+
 		<?php
 	}
 	
