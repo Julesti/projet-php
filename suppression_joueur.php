@@ -1,7 +1,7 @@
 <?php require('config.php'); ?>
 <html>
 
-	<?php require('header.html'); ?>
+	<?php include('header.html'); ?>
 	
 
 <body>
@@ -16,22 +16,22 @@
 	
 	if(empty($_POST)){
 	?>
-		<p>Voulez vous supprimer ce joueur ? </p>
+		<p style="font-size: x-large; mrgin-top:20px; margin-left:25px;">Voulez vous supprimer ce joueur ? </p>
 	
 		<form action="suppression_joueur.php" method="post">	
 			<input type="hidden" name="num_licence" value="<?php echo $_GET['num_licence']?>" />
-			<input type="submit" value="oui" />
+			<input style='font-size: x-large; background-color: #A9AFAF; color:black; margin-left:25; margin-top:10px; height: 40px; float:left; width:250px;'  type="submit" value="oui" />
 		</form>
 	
-		<form action="recherche_joueur.php">	
-			<input type="submit" value="non" />
+		<form action="affichage_joueur.php">	
+			<input style='font-size: x-large; background-color: #A9AFAF; color:black; margin-left:25; margin-top:10px; height: 40px; float:left; width:250px;' type="submit" value="non" />
 		</form>
 	<?php
 	
 	}else{
 		$req = $link->prepare("DELETE FROM joueur WHERE num_licence = :num_licence");
 		$req->execute(array('num_licence' => $_POST['num_licence']));
-		header('Location:recherche_joueur.php');
+		header('Location:affichage_joueur.php');
 	}
 	?>
 	
@@ -40,3 +40,4 @@
 
 
 </html>
+

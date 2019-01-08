@@ -40,7 +40,10 @@ require('config.php');
 		<th> <?php if($data['lieu'] == 1){echo 'Domicile';}else{echo 'Exterieur';} ?> </th>
 		<th> <?php echo $data['resultat_domicile'].'-'.$data['resultat_adversaire']; ?> </th>
 		<th>
-			<a href="modification_match?id_match=<?php echo $data['id_match']; ?>"> Modifier </a>
+			<form action="modification_match.php" method='get'>	
+				<input type="hidden" name="id_match" value="<?php echo $data['id_match']?>" />
+				<input type="submit" value="modifier" style='font-size: large; height: 40px; float:center; color:#565d5d;  border:none; background-color: white;'/>
+			</form>
 		</th>
 		<th>
 		<form method="GET" action="suppression_match.php">
