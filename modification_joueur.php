@@ -26,7 +26,7 @@ require('form.php');?>
 		
 		$form = new form("modification_joueur.php","post");
 		$form->setText("Numero de la licence","num_licence",$data['num_licence']);
-		$form->setText("Nom du joueur","nom",$data['nom']);
+		$form->setText("Nom du joueur","nom",$data['nom'],"AAAA-MM-JJ");
 		$form->setText("Prenom du joueur","prenom",$data['prenom']);
 		$form->setText("Date de naissance","date",$data['date_naissance']);
 		$form->setText("Taille","taille",$data['taille']);
@@ -39,7 +39,7 @@ require('form.php');?>
 		$form->setRadio("poste","Opposé passeur","opposé passeur");
 		$form->setRadio("poste","Libero","libero");
 		
-		$form->setText("Notes personnelle du joueur","note",$data['notes']);
+		$form->setTextarea("Notes personnelle du joueur","note",$data['notes']);
 		
 		$form->addText("Statut : ");
 		$form->setRadio("statut","Actif","actif");

@@ -13,9 +13,9 @@ class form{
 	
 	}
 	
-	public function setText($affiche,$name,$value){
+	public function setText($affiche,$name,$value,$back_text = ""){
 		$this->_fields[] ="<div style=' display: inline-block; margin-left : 50px;'><p style='float:left; font-size: x-large;'>$affiche : </p> 
-							<p ><input style='height: 35px; float:right; width:1200px; ' name='$name' value='$value' type='text' /></p></div></br>";
+							<p><input placeholder='$back_text' style='height: 35px; float:right; width:1200px; ' name='$name' value='$value' type='text' /></p></div></br>";
 	}
 	
 
@@ -30,6 +30,11 @@ class form{
 	public function setInput($affiche,$name,$value,$type){
 		$this->_fields[] = "<p style='font-size: x-large; margin-left : 50px;'>$affiche </p> 
 							<input style='font-size: large; margin-left : 65px;' name='$name' value='$value' type='$type'/>";
+	}
+	
+	public function setTextarea($affiche,$name,$value,$back_text = ""){
+		$this->_fields[] ="<div style=' display: inline-block; margin-left : 50px;'><p style='float:left; font-size: x-large;'>$affiche : </p> 
+							<p><textarea rows='10' cols='50' placeholder='$back_text' style='float:right; width:1200px; ' name='$name' >$value</textarea></p></div></br>";
 	}
 	
 	public function addText($text){

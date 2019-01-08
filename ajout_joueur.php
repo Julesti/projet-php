@@ -22,9 +22,9 @@ require('form.php');
 		$form->setText("Numero de la licence","num_licence","");
 		$form->setText("Nom du joueur","nom","");
 		$form->setText("Prenom du joueur","prenom","");
-		$form->setText("Date de naissance","date","");
-		$form->setText("Taille","taille","");
-		$form->setText("Poids","poids","");
+		$form->setText("Date de naissance","date","","AAAA-MM-JJ");
+		$form->setText("Taille","taille","","ex : 1.80");
+		$form->setText("Poids","poids","", "ex : 80");
 		
 		$form->addText("Poste occupé : ");
 		$form->setRadio("poste","Attaquant","attaquant");
@@ -33,7 +33,7 @@ require('form.php');
 		$form->setRadio("poste","Opposé passeur","opposé passeur");
 		$form->setRadio("poste","Libero","libero");
 		
-		$form->setText("Notes personnelle du joueur","note","");
+		$form->setTextarea("Notes personnelle du joueur","note","");
 		$form->setInput("Photo du joueur","photo","","file");
 		
 		$form->addText("Statut du joueur : ");
