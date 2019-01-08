@@ -27,8 +27,6 @@ require('form.php');
 			$req_suppr = $link->prepare('DELETE from jouer_match where id_match = :id_match and num_licence = :num_licence');
 			$req_suppr->execute(array( 'id_match' => $_POST['id_match'],
 										'num_licence' => $_POST['num_licence']));
-					
-			
 		}
 		
 		//Requete d'insertion du match
@@ -46,7 +44,8 @@ require('form.php');
 				<p style='font-size: x-large; margin-left : 30px; float:left;'> Liste match à préparer : </p>
 		
 				<!-- Liste des match à préparer!-->
-				<p style='float:left; margin-top:27px;'><select  style='font-size: large; width:500px; margin-left : 50px;' id="match" name="id_match" onchange='document.forms.form_match.submit();'>
+				<p style='float:left; margin-top:27px;'>
+				<select  style='font-size: large; width:500px; margin-left : 50px;' id="match" name="id_match" onchange='document.forms.form_match.submit();'>
 					<option value="">Choissiser un match</option>
 					<?php 			
 					$req_match = $link->prepare("Select * 
@@ -65,6 +64,10 @@ require('form.php');
 			<br />
 			<br />
 			
+			<?php 
+			
+			if(isset($_POST['id_match'])){
+				?>
 			
 			<form name="form_joueur" action="feuille_match.php" method="post">
 			<!--Choix de la position des joueurs!-->
@@ -103,7 +106,7 @@ require('form.php');
 						<?php
 					} 
 					?>
-					<input style='font-size: large; background-color: #A9AFAF; color:black; height: 27px; width:200px; margin-left:15px;' type="submit" value="Ajouter le joueur"/>	
+					<input style='font-size: large; background-color: #A9AFAF; color:black; height: 27px; width:200px; margin-left:15px;' onclick="match_not_null()" type="submit" value="Ajouter le joueur"/>	
 			</form>
 			<br />
 		
@@ -132,9 +135,8 @@ require('form.php');
 			
 			</select>
 			
-
-			<br />
-			<br />
+			<p style="font-size: x-large; margin-left : 30px; color:red;font-weight:bold;"> 6 joueurs titulaires par match.</p>
+			
 		
 			<p style='font-size: x-large; margin-left : 30px; '>Liste joueurs remplaçant : </p>
 			<select  style='font-size: large; margin-left : 30px;'id="liste_joueur_remplacant" name="joueur_rem"size="3">
@@ -173,12 +175,14 @@ require('form.php');
 			</form>
 			<?php
 			}
+			$req_joueur->closeCursor();
+			$req_match->closeCursor();
+		}
 			?>
 	
 	
 		<?php
-		$req_joueur->closeCursor();
-		$req_match->closeCursor(); 
+		 
 		
 		
 	// Insertion dans la base de données	
@@ -190,6 +194,14 @@ require('form.php');
 		function affiche_bouton(elm){
 			document.getElementById("hidden_but").style.visibility = "visible";
 			document.getElementById("hidden_joueur").value = elm.value;
+		}
+		
+		function match_not_null(){
+			var match = document.getElementById('match');
+			var select = match.selectedIndex;
+			if(match.options[select].value == ""){
+				alert("Veuillez choisir un match");
+			}
 		}
 	
 	</script>

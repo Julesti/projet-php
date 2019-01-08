@@ -31,7 +31,7 @@ require('config.php');
 		</tr>
 	<?php
 	
-	$req = $link->prepare("select * from joueur");
+	$req = $link->prepare("select * from joueur order by nom");
 	$req->execute();
 	while($data = $req->fetch()){
 	
