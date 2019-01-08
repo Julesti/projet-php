@@ -36,7 +36,7 @@ require('form.php');?>
 		$form->setRadio("poste","Attaquant","attaquant");
 		$form->setRadio("poste","Passeur","passeur");
 		$form->setRadio("poste","Centre","centre");
-		$form->setRadio("poste","Opposé passeur","opposé passeur");
+		$form->setRadio("poste","Oppose passeur","oppose_passeur");
 		$form->setRadio("poste","Libero","libero");
 		
 		$form->setTextarea("Notes personnelle du joueur","note",$data['notes']);
@@ -59,7 +59,7 @@ require('form.php');?>
 		poids = :poids,
 		poste = :poste,
 		notes = :note,
-		statut = :statut
+		statut = :statut,
 		photo = :photo 
 		WHERE num_licence = :num_licence ");
 		
@@ -86,8 +86,57 @@ require('form.php');?>
 	
 	?>
 	
+	<script>
+	
+		var position = '<?php echo $data['poste'];?>';
+		var statut = '<?php echo $data['statut'];?>';
+		
+		window.onload = change_poste(position);
+		window.onload = change_statut(statut);
+		
+		function change_poste(poste){			
+			switch(poste){
+				case "attaquant":
+					document.getElementById('Attaquant').checked = true;
+					break;
+				case "passeur":  
+					document.getElementById('Passeur').checked = true;
+					break;
+				case "centre": 
+					document.getElementById('Centre').checked = true;
+					break;
+				case "oppose_passeur":
+					document.getElementById('Oppose passeur').checked = true;
+					break;
+				case "libero":
+					document.getElementById('Libero').checked = true;
+					break;
+			}
+		}
+		
+		function change_statut(statut){			
+			switch(statut){
+				case "actif":
+					document.getElementById('Actif').checked = true;
+					break;
+				case "blesse":  
+					document.getElementById('Blessé').checked = true;
+					break;
+				case "suspendu": 
+					document.getElementById('Suspendu').checked = true;
+					break;
+				case "absent":
+					document.getElementById('Absent').checked = true;
+					break;
+
+			}
+		}
+	
+	</script>
 
 </body>
+
+
 
 
 </html>

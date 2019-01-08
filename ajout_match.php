@@ -18,12 +18,12 @@ require('form.php');
 	if(empty($_POST)){
 		$form = new form("ajout_match.php","post");
 	
-		$form->setText("Date du match","date","");
+		$form->setText("Date du match","date","","YYYY-MM-DD");
 		$form->setInput("Heure du match","heure","","time");
 		$form->setText("Nom des adversaires","nom_adversaire","");
 		$form->addText("Lieu : ");
 		$form->setRadio("lieu","Domicile",True);
-		$form->setRadio("lieu","Extérieur",False);
+		$form->setRadio("lieu","Extérieur",0);
 		$form->getform();
 
 	}

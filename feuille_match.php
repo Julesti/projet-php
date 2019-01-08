@@ -50,7 +50,8 @@ require('form.php');
 					<?php 			
 					$req_match = $link->prepare("Select * 
 					from matchbis 
-					where CAST(NOW() AS DATE) < date");
+					where CAST(NOW() AS DATE) < date
+					order by date ");
 					$req_match->execute();
 			
 					while($data = $req_match->fetch()){	
@@ -84,7 +85,8 @@ require('form.php');
 						<?php
 					
 						$req_joueur = $link->prepare('Select num_licence, nom, prenom, poste from joueur 
-						where statut like "actif"');
+						where statut like "actif" 
+						order by nom');
 						$req_joueur->execute();
 					
 						while($data = $req_joueur->fetch()){
